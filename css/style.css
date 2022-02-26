@@ -1,3 +1,5 @@
+/* worked with Katie Radner */
+
 body {
     font-family: 'Poppins', 'serif';
     background-image: url('../images/concrete_seamless.png');
@@ -6,22 +8,21 @@ body {
 
 header {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    align-items: center;
 }
 
 .nav_links {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
 nav a:visited {
     color: blue;
 }
 
-.card {
-    border-radius: 50px 50px 0px 0px;
-    flex-basis: 450px;
+.nav_item a:visited{
+    color:blue;
 }
 
 .card > header {
@@ -32,24 +33,114 @@ nav a:visited {
     border-radius: 50px 50px 0px 0px;
 }
 
+.card {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 450px;
+    border-radius: 50px 50px 0px 0px;
+    flex-basis: 450px;
+    justify-content: center;
+}
+
 h4 {
     text-align: center;
 }
 
 .pricing {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .gallery img {
     border: solid 10px #50C7C7;
-    margin: 10px 10px 10px 10px;
+    margin: 10px;
     width: 300px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
+}
+
+.gallery {
+    display: flex;
+    flex-flow: row wrap;
     justify-content: center;
+}
+
+@keyframes mymove {
+    from {width: 25px; opacity: 0;}
+    to {width: 475px; opacity: 1;}
+}
+
+#logo {
+    animation: mymove 5s ease-in;
+}
+
+@media screen and (min-width: 900px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav_links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .card {
+        flex-basis: 250px;
+    }
+
+    body > header {
+        position: sticky;
+        top: 0px;
+    }
+
+    .pricing {
+        align-items: center;
+    }
+}
+
+@media screen and (prefers-reduced-motion) {
+    #logo {
+      animation-name: none;
+    }
+  }
+
+@media print {
+    body {
+        font-family: "Arial", "Helvetica", "sans-serif";
+        background-image: none;
+    }
+    
+    nav {
+        width: 100%;
+    }
+
+    .nav_links {
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: 1;
+    }
+
+    .pricing {
+        align-items: flex-end;
+        flex-wrap: nowrap;
+    }
+
+    .card {
+        border: solid 2px #45ADDD;
+        flex-basis: 325px;
+    }
+
+    #gallery,
+    .gallery {
+        display: none;
+        flex-wrap: nowrap;
+    }
+
+    .card ul li:nth-child(2)::after {
+        content: "\01F44D";
+    }
 }
